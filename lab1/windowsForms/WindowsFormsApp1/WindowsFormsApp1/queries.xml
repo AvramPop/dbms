@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+<queries>
+<query>
+	<relation>Publisher-Book</relation>
+	<parent>Publisher</parent>
+	<child>Book</child>
+	<select_parent>select * from Publisher</select_parent>
+	<select_children>select * from Book where publisher_id = @parent_id</select_children>
+	<add_children>insert into Book(name, year_published, publisher_id) values (@param1, @param2, @param3)</add_children>
+	<remove_children>delete from Book where book_id = @id</remove_children>
+	<update_children>
+		update Book set name = @param1, year_published = @param2, publisher_id = @param3 where book_id = @param4
+	</update_children>
+</query>
+	<query>
+		<relation>Denomination-Church</relation>
+		<parent>Denomination</parent>
+		<child>Church</child>
+		<select_parent>select * from Denomination</select_parent>
+		<select_children>select * from Church where denomination_id = @parent_id</select_children>
+		<add_children>insert into Church(name, address, denomination_id) values (@param1, @param2, @param3)</add_children>
+		<remove_children>delete from Church where church_id = @id</remove_children>
+		<update_children>
+			update Church set name = @param1, address = @param2, denomination_id = @param3 where church_id = @param4
+		</update_children>
+	</query>
+</queries>
+</data>
